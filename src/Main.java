@@ -22,23 +22,34 @@ public class Main {
     }
 
     public static void addNewBook(Book newBook, String location) {
-        manual.put(newBook, location);
+        if (newBook != null && location != null)
+            manual.put(newBook, location);
+        else
+            System.out.println("Переданны пустые данные");
     }
 
     public static void deleteBook(String name, String author, int years) {
-        Book deleteBook = new Book(name,author,years);
-        if (manual.containsKey(deleteBook))
-            manual.remove(deleteBook);
-        else
-            System.out.println("Книга не найдена");
+        if (name != null && author != null) {
+            Book deleteBook = new Book(name, author, years);
+            if (manual.containsKey(deleteBook))
+                manual.remove(deleteBook);
+            else
+                System.out.println("Книга не найдена");
+        } else {
+            System.out.println("Переданны пустые данные");
+        }
     }
 
     public static void getInfoLocationBook(String name, String author, int years) {
-        Book searchBook = new Book(name, author, years);
-        if (manual.containsKey(searchBook))
-            System.out.println(manual.get(searchBook));
-        else
-            System.out.println("Книга не найдена");
+        if (name != null && author != null) {
+            Book searchBook = new Book(name, author, years);
+            if (manual.containsKey(searchBook))
+                System.out.println(manual.get(searchBook));
+            else
+                System.out.println("Книга не найдена");
+        } else {
+            System.out.println("Переданны пустые данные");
+        }
     }
 
     public static void getFullInfo() {
